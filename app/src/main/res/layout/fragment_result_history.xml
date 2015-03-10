@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="60dp" tools:context="ladsoft.roulette.fragment.ResultDialog"
+    android:orientation="horizontal"
+    android:padding="5dp">
+
+    <!--TODO put day of week and date inside circle element-->
+
+    <LinearLayout android:id="@+id/linear_layout_circle_date"
+        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/shape_oval">
+        <TextView android:id="@+id/fragment_result_date_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="@string/what"/>
+        <TextView android:id="@+id/fragment_result_dayweek_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="10sp"
+            android:text="@string/what" />
+    </LinearLayout>
+
+    <TextView android:id="@+id/fragment_result_place_text"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:textSize="20sp"
+        android:text="@string/what" />
+
+</LinearLayout>
