@@ -1,16 +1,26 @@
 package ladsoft.roulette.fragment;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 
 import ladsoft.roulette.R;
+import ladsoft.roulette.adapter.PlaceHistoryListAdapter;
+import ladsoft.roulette.entity.PlaceHistory;
 
-public class Tab2 extends Fragment {
+public class Tab2
+    extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,15 +36,15 @@ public class Tab2 extends Fragment {
 
 //    private Button mButtonRun;
 //    private TextView mTxtViewResult;
-//    private ListView mListViewHistory;
-//    private BaseAdapter mListAdapter;
+    private ListView mListViewHistory;
+    protected BaseAdapter mListAdapter;
 //
-//    private Resources mResources;
+    private Resources mResources;
 //    private String mRandomResult;
-//    private Calendar mCalendar;
-//    private ArrayList<String> mArrayPlace;
-//    private ArrayList<PlaceHistory> mArrayHistory;
-//    private String[] mArrayWeekday;
+    private Calendar mCalendar;
+    private ArrayList<String> mArrayPlace;
+    private ArrayList<PlaceHistory> mArrayHistory;
+    private String[] mArrayWeekday;
 //    private String mDayWeek;
 //    private PlaceHistory mPlaceHistory;
 
@@ -69,11 +79,11 @@ public class Tab2 extends Fragment {
         }
 
         // init variables
-//        mResources = getResources();
-//        mCalendar = Calendar.getInstance();
-//        mArrayHistory = new ArrayList<PlaceHistory>();
-//        mArrayPlace = new ArrayList<String>(Arrays.asList(mResources.getStringArray(R.array.places)));
-//        mArrayWeekday = mResources.getStringArray(R.array.weekdays);
+        mResources = getResources();
+        mCalendar = Calendar.getInstance();
+        mArrayHistory = new ArrayList<PlaceHistory>();
+        mArrayPlace = new ArrayList<String>(Arrays.asList(mResources.getStringArray(R.array.places)));
+        mArrayWeekday = mResources.getStringArray(R.array.weekdays);
     }
 
     @Override
@@ -118,7 +128,7 @@ public class Tab2 extends Fragment {
 
 //        mButtonRun = (Button) view.findViewById(R.id.tab1_btn_run);
 //        mTxtViewResult = (TextView) view.findViewById(R.id.tab1_txtview_result);
-       // mListViewHistory = (ListView) view.findViewById(R.id.main_listview_history);
+        mListViewHistory = (ListView) view.findViewById(R.id.fragment_history_listview);
 //        mDayWeek = mArrayWeekday[(mCalendar.get(Calendar.DAY_OF_WEEK) - 1)];
 
 //        mButtonRun.setOnClickListener(new View.OnClickListener() {
@@ -143,12 +153,12 @@ public class Tab2 extends Fragment {
 //            }
 //        });
 
-       // Bundle extras = new Bundle();
-       // extras.putStringArray(PlaceHistoryListAdapter.ARG_PARAM_WEEKDAYS, mArrayWeekday);
+        Bundle extras = new Bundle();
+        extras.putStringArray(PlaceHistoryListAdapter.ARG_PARAM_WEEKDAYS, mArrayWeekday);
 
-       // mListAdapter = new PlaceHistoryListAdapter(mActivity, mArrayHistory, extras);
+        mListAdapter = new PlaceHistoryListAdapter(mActivity, mArrayHistory, extras);
 
-     //   mListViewHistory.setAdapter(mListAdapter);
+        mListViewHistory.setAdapter(mListAdapter);
     }
 
     /**

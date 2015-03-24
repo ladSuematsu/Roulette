@@ -5,25 +5,48 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.List;
 
 import ladsoft.roulette.R;
+import ladsoft.roulette.adapter.PlaceHistoryListAdapter;
 import ladsoft.roulette.adapter.SlidingTabsFragmentAdapter;
+import ladsoft.roulette.entity.PlaceHistory;
 import ladsoft.roulette.fragment.ResultDialog;
 import view.SlidingTabLayout;
 
 //TODO: Make app work with PlaceHistory entity class
-public class MainActivity extends ActionBarActivity implements ResultDialog.OnFragmentInteractionListener {
+public class MainActivity
+    extends ActionBarActivity
+    implements ResultDialog.OnFragmentInteractionListener{
     @Override
     public void onFragmentInteraction(Bundle bundle) {
-//        mArrayHistory.add((PlaceHistory) bundle.getSerializable(ResultDialog.ARG_PARAM_PLACEHISTORY));
+       // mArrayHistory.add((PlaceHistory) bundle.getSerializable(ResultDialog.ARG_PARAM_PLACEHISTORY));
 //        mTxtViewResult.setText(bundle.getString(ResultDialog.ARG_PARAM_PLACE));
 //        mListAdapter.notifyDataSetChanged();
+        View mainTabView = mViewPager.getChildAt(0);
+        View historyTabView = mViewPager.getChildAt(1);
+        ListView historyListView = (ListView) historyTabView.findViewById(R.id.fragment_history_listview);
+        PlaceHistoryListAdapter historyListAdapter = (PlaceHistoryListAdapter) historyListView.getAdapter();
+
+        PlaceHistory placeHistory = (PlaceHistory) bundle.getSerializable(ResultDialog.ARG_PARAM_PLACEHISTORY);
+
+        List<PlaceHistory> listPlaceHistory = historyListAdapter.getAllItems();
+        listPlaceHistory.add(placeHistory);
+
+        TextView resultText = (TextView) mainTabView.findViewById(R.id.tab1_txtview_result);
+        resultText.setText(placeHistory.getPlace());
+
+        historyListAdapter.notifyDataSetChanged();
     }
 
+    private SlidingTabLayout mSlidingTabLayout;
+    private ViewPager mViewPager;
 
-
-
-    @Override
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -31,13 +54,14 @@ public class MainActivity extends ActionBarActivity implements ResultDialog.OnFr
         getSupportActionBar().hide();
 
         if(savedInstanceState == null) {
-            ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-            viewPager.setAdapter(new SlidingTabsFragmentAdapter(getSupportFragmentManager()
+            mViewPager = (ViewPager) findViewById(R.id.viewpager);
+            mViewPager.setAdapter(new SlidingTabsFragmentAdapter(getSupportFragmentManager()
                                         , MainActivity.this));
 
-            SlidingTabLayout slidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
-            slidingTabLayout.setDistributeEvenly(true);
-            slidingTabLayout.setViewPager(viewPager);
+
+            mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
+            mSlidingTabLayout.setDistributeEvenly(true);
+            mSlidingTabLayout.setViewPager(mViewPager);
         }
 
     }

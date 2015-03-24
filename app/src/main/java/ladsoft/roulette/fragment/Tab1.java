@@ -24,6 +24,7 @@ import ladsoft.roulette.R;
 import ladsoft.roulette.entity.PlaceHistory;
 
 public class Tab1 extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -128,12 +129,14 @@ public class Tab1 extends Fragment {
     }
 
     private void initViews(View view) {
-        mButtonRun = (Button) view.findViewById(R.id.tab1_btn_run);
+       // mButtonRun = (Button) view.findViewById(R.id.tab1_btn_run);
         mTxtViewResult = (TextView) view.findViewById(R.id.tab1_txtview_result);
-       // mListViewHistory = (ListView) view.findViewById(R.id.main_listview_history);
+        // mListViewHistory = (ListView) view.findViewById(R.id.main_listview_history);
         mDayWeek = mArrayWeekday[(mCalendar.get(Calendar.DAY_OF_WEEK) - 1)];
 
-        mButtonRun.setOnClickListener(new View.OnClickListener() {
+//        mButtonRun.setOnClickListener(new View.OnClickListener() {
+
+        mTxtViewResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mPlaceHistory = new PlaceHistory();
@@ -151,7 +154,7 @@ public class Tab1 extends Fragment {
 
                 showResultDialog(bundle);
 
-                mButtonRun.setText(mResources.getString(R.string.text_btn_runagain));
+//                mButtonRun.setText(mResources.getString(R.string.text_btn_runagain));
             }
         });
 

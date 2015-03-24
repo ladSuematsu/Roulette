@@ -18,7 +18,7 @@ import ladsoft.roulette.entity.PlaceHistory;
 /**
  * Created by suematsu on 2/16/15.
  */
-public class PlaceHistoryListAdapter extends BaseAdapter {
+public class PlaceHistoryListAdapter extends BaseAdapter{
     public static final String ARG_PARAM_WEEKDAYS = "0";
 
     private Context mContext;
@@ -75,6 +75,11 @@ public class PlaceHistoryListAdapter extends BaseAdapter {
         dateView.setText(sdf.format(mCalendar.getTime()));
 
         return view;
+    }
+
+    public List<PlaceHistory> getAllItems()
+    {
+        return mPlaceHistoryList;
     }
 
 }
