@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Roleta da Gordice</string>
     <string name="action_settings">Settings</string>
-    <string name="text_btn_run">Roda!</string>
-    <string name="text_btn_runagain">Roda de novo!</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Roullete</string>
+    <string name="text_btn_run">Spin!</string>
+    <string name="text_btn_runagain">Spin again!</string>
     <string name="text_dialog_result_title">Pega o crachá!</string>
     <string name="what">\???</string>
-    <string name="message_ok">VQV</string>
-    <string name="message_cancel">Não valeu!</string>
+    <string name="message_ok">Let\'s go!</string>
+    <string name="message_cancel">No way!</string>
+    <string name="tab1_name">Sort New Place</string>
+    <string name="tab2_name">History</string>
 
 </resources>

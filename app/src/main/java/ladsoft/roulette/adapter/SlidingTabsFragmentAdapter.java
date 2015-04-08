@@ -1,10 +1,12 @@
 package ladsoft.roulette.adapter;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import ladsoft.roulette.R;
 import ladsoft.roulette.fragment.Tab1;
 import ladsoft.roulette.fragment.Tab2;
 
@@ -14,11 +16,18 @@ import ladsoft.roulette.fragment.Tab2;
 public class SlidingTabsFragmentAdapter extends FragmentPagerAdapter {
 
     private Context mContext;
-    private final String[] tabTitles = new String[]{"Tab #1", "Tab #2"};
+    private String[] mTabTitles;
 
     public SlidingTabsFragmentAdapter(FragmentManager fm, Context context){
         super(fm);
         this.mContext = context;
+
+        // Sets tab names.
+        Resources resources = mContext.getResources();
+        mTabTitles = new String[]{
+                resources.getString(R.string.tab1_name),
+                resources.getString(R.string.tab2_name)
+        };
     }
 
 
@@ -47,6 +56,6 @@ public class SlidingTabsFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabTitles[position];
+        return mTabTitles[position];
     }
 }

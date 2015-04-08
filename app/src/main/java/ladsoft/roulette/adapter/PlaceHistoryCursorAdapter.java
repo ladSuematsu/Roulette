@@ -47,6 +47,7 @@ public class PlaceHistoryCursorAdapter extends CursorAdapter {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM");
 
         Date date = new Date(cursor.getLong(cursor.getColumnIndex(PlaceHistoryTable.SORT_DATE)));
+        mCalendar.setTime(date);
         String weekDay = mArrayWeekDay[mCalendar.get(Calendar.DAY_OF_WEEK) - 1];
 
         placeText.setText(cursor.getString(cursor.getColumnIndex(PlaceHistoryTable.PLACE_NAME)));
