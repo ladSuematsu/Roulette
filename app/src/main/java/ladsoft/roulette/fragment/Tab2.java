@@ -2,13 +2,17 @@ package ladsoft.roulette.fragment;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -16,8 +20,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 
 import ladsoft.roulette.R;
+import ladsoft.roulette.adapter.PlaceHistoryCursorAdapter;
 import ladsoft.roulette.adapter.PlaceHistoryListAdapter;
+import ladsoft.roulette.contentprovider.RouletteContentProvider;
+import ladsoft.roulette.database.table.PlaceHistoryTable;
 import ladsoft.roulette.entity.PlaceHistory;
+import ladsoft.roulette.manager.DatabaseManager;
 
 public class Tab2
     extends Fragment {
@@ -34,19 +42,14 @@ public class Tab2
 
     private Activity mActivity;
 
-//    private Button mButtonRun;
-//    private TextView mTxtViewResult;
     private ListView mListViewHistory;
-    protected BaseAdapter mListAdapter;
+    protected CursorAdapter mCursorAdapter;
 //
     private Resources mResources;
-//    private String mRandomResult;
     private Calendar mCalendar;
     private ArrayList<String> mArrayPlace;
     private ArrayList<PlaceHistory> mArrayHistory;
     private String[] mArrayWeekday;
-//    private String mDayWeek;
-//    private PlaceHistory mPlaceHistory;
 
     /**
      * Use this factory method to create a new instance of
@@ -125,40 +128,49 @@ public class Tab2
     }
 
     private void initViews(View view) {
-
-//        mButtonRun = (Button) view.findViewById(R.id.tab1_btn_run);
-//        mTxtViewResult = (TextView) view.findViewById(R.id.tab1_txtview_result);
         mListViewHistory = (ListView) view.findViewById(R.id.fragment_history_listview);
-//        mDayWeek = mArrayWeekday[(mCalendar.get(Calendar.DAY_OF_WEEK) - 1)];
-
-//        mButtonRun.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mPlaceHistory = new PlaceHistory();
-//
-//                mRandomResult = mArrayPlace.get(randomize() - 1);
-//
-//                mPlaceHistory.setPlace(mRandomResult);
-//                mPlaceHistory.setDate(new Date());
-//
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable(ResultDialog.ARG_PARAM_PLACEHISTORY , mPlaceHistory);
-//                bundle.putStringArray(ResultDialog.ARG_PARAM_WEEKDAYS, mArrayWeekday);
-//                bundle.putString(ResultDialog.ARG_PARAM_PLACE, mRandomResult);
-//                // bundle.putString(ResultDialog.ARG_PARAM_WEEKDAY, mDayWeek);
-//
-//                showResultDialog(bundle);
-//
-//                mButtonRun.setText(mResources.getString(R.string.text_btn_runagain));
-//            }
-//        });
 
         Bundle extras = new Bundle();
         extras.putStringArray(PlaceHistoryListAdapter.ARG_PARAM_WEEKDAYS, mArrayWeekday);
 
-        mListAdapter = new PlaceHistoryListAdapter(mActivity, mArrayHistory, extras);
+        mCursorAdapter = new PlaceHistoryCursorAdapter(mActivity, null, true);
 
-        mListViewHistory.setAdapter(mListAdapter);
+        getLM();
+
+        mListViewHistory.setAdapter(mCursorAdapter);
+    }
+
+    private void getLM()
+    {
+        LoaderManager loaderManager = getLoaderManager();
+
+        loaderManager.initLoader(0, null, new LoaderManager.LoaderCallbacks<Cursor>() {
+            DatabaseManager mDataBaseManager;
+
+            @Override
+            public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+                mDataBaseManager = new DatabaseManager(mActivity);
+
+                CursorLoader cursorLoader =
+                        mDataBaseManager.query(RouletteContentProvider.PLACE_HISTORY_CONTENT_URI
+                                , PlaceHistoryTable.ALL_COLUMNS
+                                , null
+                                , null
+                                , null);
+
+                return cursorLoader;
+            }
+
+            @Override
+            public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+                mCursorAdapter.swapCursor(data);
+            }
+
+            @Override
+            public void onLoaderReset(Loader<Cursor> loader) {
+                mCursorAdapter.swapCursor(null);
+            }
+        });
     }
 
     /**

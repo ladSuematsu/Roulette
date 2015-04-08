@@ -129,12 +129,8 @@ public class Tab1 extends Fragment {
     }
 
     private void initViews(View view) {
-       // mButtonRun = (Button) view.findViewById(R.id.tab1_btn_run);
         mTxtViewResult = (TextView) view.findViewById(R.id.tab1_txtview_result);
-        // mListViewHistory = (ListView) view.findViewById(R.id.main_listview_history);
         mDayWeek = mArrayWeekday[(mCalendar.get(Calendar.DAY_OF_WEEK) - 1)];
-
-//        mButtonRun.setOnClickListener(new View.OnClickListener() {
 
         mTxtViewResult.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,20 +146,10 @@ public class Tab1 extends Fragment {
                 bundle.putSerializable(ResultDialog.ARG_PARAM_PLACEHISTORY , mPlaceHistory);
                 bundle.putStringArray(ResultDialog.ARG_PARAM_WEEKDAYS, mArrayWeekday);
                 bundle.putString(ResultDialog.ARG_PARAM_PLACE, mRandomResult);
-                // bundle.putString(ResultDialog.ARG_PARAM_WEEKDAY, mDayWeek);
 
                 showResultDialog(bundle);
-
-//                mButtonRun.setText(mResources.getString(R.string.text_btn_runagain));
             }
         });
-
-       // Bundle extras = new Bundle();
-       // extras.putStringArray(PlaceHistoryListAdapter.ARG_PARAM_WEEKDAYS, mArrayWeekday);
-
-       // mListAdapter = new PlaceHistoryListAdapter(mActivity, mArrayHistory, extras);
-
-     //   mListViewHistory.setAdapter(mListAdapter);
     }
 
     private void showResultDialog(Bundle bundle) {
