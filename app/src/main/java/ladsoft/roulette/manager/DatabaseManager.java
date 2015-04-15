@@ -10,7 +10,7 @@ import android.net.Uri;
 import ladsoft.roulette.contentprovider.RouletteContentProvider;
 
 /**
- * Created by suematsu on 3/24/15.
+ * Wrapper class for ContentProvider calls.
  */
 public class DatabaseManager {
     private Context mContext;

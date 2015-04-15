@@ -2,10 +2,9 @@
 <resources>
 
     <string name="action_settings">Settings</string>
-    <string name="app_name">Roullete</string>
+    <string name="app_name">Food Roullete</string>
     <string name="text_btn_run">Spin!</string>
     <string name="text_btn_runagain">Spin again!</string>
-    <string name="text_dialog_result_title">Pega o crachá!</string>
     <string name="what">\???</string>
     <string name="message_ok">Let\'s go!</string>
     <string name="message_cancel">No way!</string>

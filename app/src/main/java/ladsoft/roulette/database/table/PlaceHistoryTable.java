@@ -1,7 +1,7 @@
 package ladsoft.roulette.database.table;
 
 /**
- * Created by suematsu on 3/24/15.
+ * Interface for table interaction.
  */
 public interface PlaceHistoryTable {
     String TABLE_NAME = "place_history";

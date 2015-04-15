@@ -1,7 +1,6 @@
 package ladsoft.roulette.fragment;
 
 import android.app.Activity;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,46 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-
 import ladsoft.roulette.R;
 import ladsoft.roulette.adapter.PlaceHistoryCursorAdapter;
 import ladsoft.roulette.contentprovider.RouletteContentProvider;
 import ladsoft.roulette.database.table.PlaceHistoryTable;
-import ladsoft.roulette.entity.PlaceHistory;
 import ladsoft.roulette.manager.DatabaseManager;
 
-public class Tab2
-    extends Fragment {
+/**
+ * Fragment for history list tab.
+ */
+public class Tab2 extends Fragment {
 
-
+    protected CursorAdapter mCursorAdapter;
     private Activity mActivity;
 
     private ListView mListViewHistory;
-    protected CursorAdapter mCursorAdapter;
-
-    private Resources mResources;
-    private Calendar mCalendar;
-    private ArrayList<String> mArrayPlace;
-    private ArrayList<PlaceHistory> mArrayHistory;
-    private String[] mArrayWeekday;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TestFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Tab2 newInstance(String param1, String param2) {
-        Tab2 fragment = new Tab2();
-        Bundle args = new Bundle();
-        return fragment;
-    }
 
     public Tab2() {
         // Required empty public constructor
@@ -62,13 +36,6 @@ public class Tab2
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Init variables.
-        mResources = getResources();
-        mCalendar = Calendar.getInstance();
-        mArrayHistory = new ArrayList<PlaceHistory>();
-        mArrayPlace = new ArrayList<String>(Arrays.asList(mResources.getStringArray(R.array.places)));
-        mArrayWeekday = mResources.getStringArray(R.array.weekdays);
     }
 
     @Override
@@ -104,6 +71,9 @@ public class Tab2
         mListViewHistory.setAdapter(mCursorAdapter);
     }
 
+    /**
+     * Ints loaderManager for fragment's CursorAdapter
+     */
     private void getLM()
     {
         LoaderManager loaderManager = getLoaderManager();

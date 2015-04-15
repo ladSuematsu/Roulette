@@ -18,6 +18,9 @@ import java.util.Random;
 import ladsoft.roulette.R;
 import ladsoft.roulette.entity.PlaceHistory;
 
+/**
+ * Fragment for main tab.
+ */
 public class Tab1 extends Fragment {
 
     private Activity mActivity;
@@ -28,20 +31,6 @@ public class Tab1 extends Fragment {
     private ArrayList<PlaceHistory> mArrayHistory;
     private String[] mArrayWeekday;
     private PlaceHistory mPlaceHistory;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TestFragment.
-     */
-    public static Tab1 newInstance(String param1, String param2) {
-        Tab1 fragment = new Tab1();
-        Bundle args = new Bundle();
-        return fragment;
-    }
 
     public Tab1() {
         // Required empty public constructor.

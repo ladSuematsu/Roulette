@@ -19,7 +19,7 @@
 
         <provider
             android:name="ladsoft.roulette.contentprovider.RouletteContentProvider"
-            android:authorities="ladsoft.roulette"/>
+            android:authorities="ladsoft.roulette.RouletteContentProvider"/>
     </application>
 
 </manifest>

@@ -28,7 +28,7 @@ public class MainActivity
      */
     @Override
     public void onFragmentInteraction(Bundle bundle) {
-        // Gets tab views.
+        // Get tab views.
         View mainTabView = mViewPager.getChildAt(0);
         View historyTabView = mViewPager.getChildAt(1);
 
@@ -36,20 +36,20 @@ public class MainActivity
         ListView historyListView = (ListView) historyTabView.findViewById(R.id.fragment_history_listview);
         PlaceHistoryCursorAdapter historyListAdapter = (PlaceHistoryCursorAdapter) historyListView.getAdapter();
 
-        // Gets selected entry.
+        // Get selected entry.
         PlaceHistory placeHistory = (PlaceHistory) bundle.getSerializable(ResultDialog.ARG_PARAM_PLACEHISTORY);
 
-        // Inserts new entry in DB.
+        // Insert new entry in DB.
         DatabaseManager databaseManager = new DatabaseManager(MainActivity.this);
         ContentValues values = new ContentValues();
         values.put(PlaceHistoryTable.PLACE_NAME, placeHistory.getPlace());
         values.put(PlaceHistoryTable.SORT_DATE, placeHistory.getDate().getTime());
         databaseManager.insert(RouletteContentProvider.PLACE_HISTORY_CONTENT_URI, values);
 
-        // Refreshes ListAdapter.
-        historyListAdapter.notifyDataSetChanged();
+        // Refresh ListAdapter - only when not using CursorAdapter
+        //historyListAdapter.notifyDataSetChanged();
 
-        // Refreshes circular button content.
+        // Refresh circular button content.
         TextView resultText = (TextView) mainTabView.findViewById(R.id.tab1_txtview_result);
         resultText.setText(placeHistory.getPlace());
     }
@@ -64,42 +64,19 @@ public class MainActivity
 
 
         if(savedInstanceState == null) {
-            // Hides action bar.
+            // Hide action bar.
             getSupportActionBar().hide();
 
-            // Sets tabbed navigation container view.
+            // Set tabbed navigation container view.
             mViewPager = (ViewPager) findViewById(R.id.viewpager);
             mViewPager.setAdapter(new SlidingTabsFragmentAdapter(getSupportFragmentManager()
                                         , MainActivity.this));
 
-            // Maps ViewPager to SlidingTabLayout view.
+            // Map ViewPager to SlidingTabLayout view.
             mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
             mSlidingTabLayout.setDistributeEvenly(true);
             mSlidingTabLayout.setViewPager(mViewPager);
         }
 
     }
-
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 }

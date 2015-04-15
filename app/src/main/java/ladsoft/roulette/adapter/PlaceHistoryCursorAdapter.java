@@ -16,7 +16,7 @@ import ladsoft.roulette.R;
 import ladsoft.roulette.database.table.PlaceHistoryTable;
 
 /**
- * Created by suematsu on 4/1/15.
+ * CursorAdapter implementation from history list.
  */
 public class PlaceHistoryCursorAdapter extends CursorAdapter {
 

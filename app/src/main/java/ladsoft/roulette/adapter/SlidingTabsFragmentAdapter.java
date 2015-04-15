@@ -11,7 +11,7 @@ import ladsoft.roulette.fragment.Tab1;
 import ladsoft.roulette.fragment.Tab2;
 
 /**
- * Created by suematsu on 3/10/15.
+ * FragmentPagerAdapter implementation.
  */
 public class SlidingTabsFragmentAdapter extends FragmentPagerAdapter {
 

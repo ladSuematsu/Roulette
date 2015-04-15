@@ -16,7 +16,7 @@ import ladsoft.roulette.R;
 import ladsoft.roulette.entity.PlaceHistory;
 
 /**
- * Created by suematsu on 2/16/15.
+ * ListAdapter for history list - for DB-less test purposes.
  */
 public class PlaceHistoryListAdapter extends BaseAdapter{
     public static final String ARG_PARAM_WEEKDAYS = "0";

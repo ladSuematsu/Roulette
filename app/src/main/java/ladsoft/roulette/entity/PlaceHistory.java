@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by suematsu on 2/3/15.
+ * Place history model class
  */
 public class PlaceHistory implements Serializable {
     public Date date;

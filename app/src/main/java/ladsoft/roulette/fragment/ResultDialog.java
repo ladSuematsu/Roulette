@@ -15,39 +15,19 @@ import ladsoft.roulette.R;
 import ladsoft.roulette.entity.PlaceHistory;
 
 public class ResultDialog extends DialogFragment{
-    private Resources mResources;
-    private TextView mResultText;
-
-
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // Fragment parameters.
     public static final String ARG_PARAM_PLACE = "0";
     public static final String ARG_PARAM_WEEKDAY = "1";
     public static final String ARG_PARAM_PLACEHISTORY = "2";
     public static final String ARG_PARAM_WEEKDAYS = "3";
 
-    // TODO: Rename and change types of parameters
+    private Resources mResources;
+    private TextView mResultText;
     private String mPlace;
     private String mWeekday;
     private PlaceHistory mPlaceHistory;
 
     private OnFragmentInteractionListener mListener;
-
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param Parameter 1.
-//     * @return A new instance of fragment ResultDialog.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static ResultDialog newInstance(String param) {
-//        ResultDialog fragment = new ResultDialog();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM, param);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
 
     public ResultDialog() {
         // Required empty public constructor

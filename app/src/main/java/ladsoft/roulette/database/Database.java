@@ -10,7 +10,7 @@ import java.util.Date;
 import ladsoft.roulette.database.table.PlaceHistoryTable;
 
 /**
- * Created by suematsu on 3/24/15.
+ * SQLiteOpenHelper implementation.
  */
 public class Database extends SQLiteOpenHelper {
 
@@ -21,19 +21,17 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //Table creation
         db.execSQL(PlaceHistoryTable.SQL_CREATE);
 
-        // Mock
+        // Mock data
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.MONTH, -1);
 
-        String sqlMock1 = "INSERT INTO " + PlaceHistoryTable.TABLE_NAME + " VALUES(1, 'Nonos', '" + date.getTime() +"')";
-        String sqlMock2 = "INSERT INTO " + PlaceHistoryTable.TABLE_NAME + " VALUES(2, 'Muqueca', '" + calendar.getTime().getTime() +"')";
-
+        String sqlMock1 = "INSERT INTO " + PlaceHistoryTable.TABLE_NAME + " VALUES(2, 'Muqueca', '" + calendar.getTime().getTime() +"')";
         db.execSQL(sqlMock1);
-        db.execSQL(sqlMock2);
     }
 
     @Override

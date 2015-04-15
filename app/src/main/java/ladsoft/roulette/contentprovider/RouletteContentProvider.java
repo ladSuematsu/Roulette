@@ -15,11 +15,11 @@ import ladsoft.roulette.database.Database;
 import ladsoft.roulette.database.table.PlaceHistoryTable;
 
 /**
- * Created by suematsu on 3/24/15.
+ * ContentProvider implementation.
  */
 public class RouletteContentProvider extends ContentProvider {
 
-    private static final String AUTHORITY = "ladsoft.roulette";
+    private static final String AUTHORITY = "ladsoft.roulette.RouletteContentProvider";
     private static final Uri AUTHORITY_URI = Uri.parse("content://" + AUTHORITY);
     private static UriMatcher URI_MATCHER;
     private Database database;
@@ -48,12 +48,12 @@ public class RouletteContentProvider extends ContentProvider {
         /**
          * Specifies the content path of the PostTable for the required Uri.
          */
-        public static final String CONTENT_PATH = "place_history";
+        public static final String CONTENT_PATH = PlaceHistoryTable.TABLE_NAME;
         /**
-         * Specifies the type for the folder and the single item o f the PlaceTable.
+         * Specifies the type for the folder and the single item o f the Place_History Table.
          */
-        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.mdsdacp.place";
-        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.mdsdacp.place";
+        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.mdsdacp." + PlaceHistoryTable.TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.mdsdacp." + PlaceHistoryTable.TABLE_NAME;
     }
 
     /**

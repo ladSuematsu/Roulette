@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_settings">Configurações</string>
+    <string name="app_name">Food Roullete</string>
+    <string name="text_btn_run">Rode!</string>
+    <string name="text_btn_runagain">Rode de novo!</string>
+    <string name="what">\???</string>
+    <string name="message_ok">Vamos lá!</string>
+    <string name="message_cancel">Não vou!</string>
+    <string name="tab1_name">Sortear local</string>
+    <string name="tab2_name">Histórico</string>
+
+</resources>
