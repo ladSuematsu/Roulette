@@ -62,8 +62,6 @@ public class MainActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        if(savedInstanceState == null) {
             // Hide action bar.
             getSupportActionBar().hide();
 
@@ -75,8 +73,7 @@ public class MainActivity
             // Map ViewPager to SlidingTabLayout view.
             mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
             mSlidingTabLayout.setDistributeEvenly(true);
-            mSlidingTabLayout.setViewPager(mViewPager);
-        }
+        mSlidingTabLayout.setViewPager(mViewPager);
 
     }
 }
