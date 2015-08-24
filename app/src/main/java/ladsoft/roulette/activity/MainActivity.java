@@ -55,7 +55,6 @@ public class MainActivity
         resultText.setText(placeHistory.getPlace());
     }
 
-//    private SlidingTabLayout mSlidingTabLayout;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
 
@@ -89,11 +88,6 @@ public class MainActivity
                 @Override
                 public void onTabReselected(TabLayout.Tab tab) {}
             });
-
-            // Map ViewPager to SlidingTabLayout view.
-            //mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
-            //mSlidingTabLayout.setDistributeEvenly(true);
-        //mSlidingTabLayout.setViewPager(mViewPager);
 
     }
 }
