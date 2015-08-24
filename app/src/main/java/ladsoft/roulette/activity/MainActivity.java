@@ -2,6 +2,7 @@ package ladsoft.roulette.activity;
 
 import android.content.ContentValues;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -54,8 +55,9 @@ public class MainActivity
         resultText.setText(placeHistory.getPlace());
     }
 
-    private SlidingTabLayout mSlidingTabLayout;
+//    private SlidingTabLayout mSlidingTabLayout;
     private ViewPager mViewPager;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +69,31 @@ public class MainActivity
 
             // Set tabbed navigation container view.
             mViewPager = (ViewPager) findViewById(R.id.viewpager);
+            mTabLayout = (TabLayout) findViewById(R.id.tablayout);
+
             mViewPager.setAdapter(new SlidingTabsFragmentAdapter(getSupportFragmentManager()
                                         , MainActivity.this));
 
+            mTabLayout.setTabsFromPagerAdapter(mViewPager.getAdapter());
+
+            mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+            mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    mViewPager.setCurrentItem(tab.getPosition());
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {}
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {}
+            });
+
             // Map ViewPager to SlidingTabLayout view.
-            mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
-            mSlidingTabLayout.setDistributeEvenly(true);
-        mSlidingTabLayout.setViewPager(mViewPager);
+            //mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
+            //mSlidingTabLayout.setDistributeEvenly(true);
+        //mSlidingTabLayout.setViewPager(mViewPager);
 
     }
 }
