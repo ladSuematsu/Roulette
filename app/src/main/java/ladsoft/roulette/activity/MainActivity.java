@@ -17,7 +17,6 @@ import ladsoft.roulette.database.table.PlaceHistoryTable;
 import ladsoft.roulette.entity.PlaceHistory;
 import ladsoft.roulette.fragment.ResultDialog;
 import ladsoft.roulette.manager.DatabaseManager;
-import view.SlidingTabLayout;
 
 public class MainActivity
     extends ActionBarActivity
