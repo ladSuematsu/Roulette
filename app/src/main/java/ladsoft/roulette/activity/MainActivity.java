@@ -2,9 +2,11 @@ package ladsoft.roulette.activity;
 
 import android.content.ContentValues;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,7 +21,7 @@ import ladsoft.roulette.fragment.ResultDialog;
 import ladsoft.roulette.manager.DatabaseManager;
 
 public class MainActivity
-    extends ActionBarActivity
+    extends AppCompatActivity
     implements ResultDialog.OnFragmentInteractionListener{
 
     /**
@@ -52,10 +54,13 @@ public class MainActivity
         // Refresh circular button content.
         TextView resultText = (TextView) mainTabView.findViewById(R.id.tab1_txtview_result);
         resultText.setText(placeHistory.getPlace());
+
+        Snackbar.make(mCoordinatorLayout, R.string.lorem_ipsum, Snackbar.LENGTH_SHORT).show();
     }
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
+    private CoordinatorLayout mCoordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +68,9 @@ public class MainActivity
         setContentView(R.layout.activity_main);
 
             // Hide action bar.
-            getSupportActionBar().hide();
+            //getSupportActionBar().hide();
+
+            mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinator_layout);
 
             // Set tabbed navigation container view.
             mViewPager = (ViewPager) findViewById(R.id.viewpager);
