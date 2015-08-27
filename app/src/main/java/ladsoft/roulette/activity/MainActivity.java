@@ -8,11 +8,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import ladsoft.roulette.R;
-import ladsoft.roulette.adapter.PlaceHistoryCursorAdapter;
 import ladsoft.roulette.adapter.SlidingTabsFragmentAdapter;
 import ladsoft.roulette.contentprovider.RouletteContentProvider;
 import ladsoft.roulette.database.table.PlaceHistoryTable;
@@ -35,8 +33,8 @@ public class MainActivity
         View historyTabView = mViewPager.getChildAt(1);
 
         // Gets history CursorAdapter.
-        ListView historyListView = (ListView) historyTabView.findViewById(R.id.fragment_history_listview);
-        PlaceHistoryCursorAdapter historyListAdapter = (PlaceHistoryCursorAdapter) historyListView.getAdapter();
+//        ListView historyListView = (ListView) historyTabView.findViewById(R.id.fragment_history_listview);
+//        PlaceHistoryCursorAdapter historyListAdapter = (PlaceHistoryCursorAdapter) historyListView.getAdapter();
 
         // Get selected entry.
         PlaceHistory placeHistory = (PlaceHistory) bundle.getSerializable(ResultDialog.ARG_PARAM_PLACEHISTORY);
