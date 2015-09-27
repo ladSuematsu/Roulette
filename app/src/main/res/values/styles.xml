@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -9,6 +9,12 @@
             <!--<item name="android:textColorPrimary">@color/colorTextPrimary</item>-->
             <!--<item name="android:textColorSecondary">@color/colorTextSecondary</item>-->
 
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/anim_in_dialog</item>
+        <item name="android:windowExitAnimation">@anim/anim_out_dialog</item>
+        <item name="android:windowTransitionBackgroundFadeDuration" tools:targetApi="lollipop">0</item>
     </style>
 
 </resources>
