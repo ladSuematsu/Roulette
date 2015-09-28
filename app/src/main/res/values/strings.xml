@@ -11,5 +11,6 @@
     <string name="tab1_name">Sort New Place</string>
     <string name="tab2_name">History</string>
     <string name="lorem_ipsum">lorem ipsum ipsum lorem ipsum lorem ipsun</string>
+    <string name="content_description_header_collapsable_image">Header</string>
 
 </resources>
