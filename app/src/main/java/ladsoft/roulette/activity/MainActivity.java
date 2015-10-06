@@ -2,6 +2,7 @@ package ladsoft.roulette.activity;
 
 import android.content.ContentValues;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -59,6 +60,7 @@ public class MainActivity
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private CoordinatorLayout mCoordinatorLayout;
+    private AppBarLayout mAppBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,8 @@ public class MainActivity
             // Set tabbed navigation container view.
             mViewPager = (ViewPager) findViewById(R.id.viewpager);
             mTabLayout = (TabLayout) findViewById(R.id.tablayout);
+            mAppBarLayout = (AppBarLayout) findViewById(R.id.main_appbarlayout);
+
 
             mViewPager.setAdapter(new SlidingTabsFragmentAdapter(getSupportFragmentManager()
                                         , MainActivity.this));
@@ -87,10 +91,23 @@ public class MainActivity
                 }
 
                 @Override
-                public void onTabUnselected(TabLayout.Tab tab) {}
+                public void onTabUnselected(TabLayout.Tab tab) { }
 
                 @Override
-                public void onTabReselected(TabLayout.Tab tab) {}
+                public void onTabReselected(TabLayout.Tab tab) { }
+            });
+
+            mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
+
+                @Override
+                public void onPageSelected(int position) {
+                    mAppBarLayout.setExpanded(true, true); // Resets the AppBarLayout's collapsed state;
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) { }
             });
 
     }
