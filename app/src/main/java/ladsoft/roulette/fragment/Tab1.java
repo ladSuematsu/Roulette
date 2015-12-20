@@ -95,7 +95,9 @@ public class Tab1 extends Fragment {
      */
     private void showResultDialog(Bundle bundle) {
         FragmentManager fragmentManager = getChildFragmentManager();
-        ResultDialog resultDialog = new ResultDialog();
+//        ResultDialog resultDialog = new ResultDialog();
+
+        ResultDialogTypeB resultDialog = new ResultDialogTypeB();
         resultDialog.setArguments(bundle);
         resultDialog.show(fragmentManager, "show");
     }
